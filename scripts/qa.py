@@ -12,6 +12,14 @@ Checks
 Exit code 1 if pops / loop stutter / dead time are found, so it can gate delivery.
 """
 import argparse, json, subprocess, sys
+
+if sys.platform == 'win32':
+    try:
+        sys.stdout.reconfigure(encoding='utf-8')
+        sys.stderr.reconfigure(encoding='utf-8')
+    except Exception:
+        pass
+
 import numpy as np
 
 p = argparse.ArgumentParser()

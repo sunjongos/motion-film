@@ -1,0 +1,8 @@
+[
+  { "from": 0,  "to": 14, "kind": "intro" },
+  { "from": 14, "to": 28, "kind": "groove" },
+  { "from": 28, "to": 52, "kind": "drop" },
+  { "from": 52, "to": 66, "kind": "breakdown" },
+  { "from": 66, "to": 78, "kind": "build" },
+  { "from": 78, "to": 90, "kind": "return" }
+]

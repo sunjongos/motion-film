@@ -16,8 +16,15 @@ Real music + real SFX (e.g. Mixkit, free for commercial use) always beat the syn
 synth only when downloads are impossible, and tell the user it is a stand-in.
 Loudness is normalised to -14 LUFS (two-pass loudnorm), true peak -1 dBTP.
 --loop: crossfades the last 40 ms into the start so a looping film has no audio click.
-"""
 import argparse, json, os, pathlib, subprocess, sys
+
+if sys.platform == 'win32':
+    try:
+        sys.stdout.reconfigure(encoding='utf-8')
+        sys.stderr.reconfigure(encoding='utf-8')
+    except Exception:
+        pass
+
 import numpy as np
 from scipy.io import wavfile
 from scipy.signal import butter, lfilter, fftconvolve

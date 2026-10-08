@@ -17,6 +17,13 @@ blurred with the END of the film (seamless loops).
 """
 import argparse, asyncio, base64, json, os, pathlib, subprocess, sys, time
 
+if sys.platform == 'win32':
+    try:
+        sys.stdout.reconfigure(encoding='utf-8')
+        sys.stderr.reconfigure(encoding='utf-8')
+    except Exception:
+        pass
+
 def args():
     p = argparse.ArgumentParser()
     p.add_argument('html'); p.add_argument('cmd', choices=['stills', 'start', 'work', 'status', 'assemble'])

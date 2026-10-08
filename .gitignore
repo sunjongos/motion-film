@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+*$py.class
+*.tmp.*
+*.done
+render_work/
+preview_stills/
+out/
+stills/
+*.log
+.cache/
+.DS_Store
+Thumbs.db

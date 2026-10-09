@@ -73,6 +73,24 @@
 
 ---
 
+## 👑 2.5 Claude Opus 초격차 5대 모션 헌법 & 카카오톡 무결점 오디오 표준
+
+### 🌟 5대 모션 불변 원칙 (The 5 Invariants)
+1. **Never Cut, Never Crossfade (연속 유기적 변형):** 단순 Fade/Cut 금지. 모든 요소는 이전 도형의 스프링 모핑(`springState`) 또는 6각 기계식 조리개(`iris`)로 전이.
+2. **Apple Keynote Liquid Glass & Chromatic Rim:** 씬 실시간 캡처 기반 $1.12\times$ 굴절, 테두리 적/청 색수차(Chromatic Aberration Red +1.2%, Blue -1.2%), 대각 스페큘러 림라이트.
+3. **Procedural Parallax & 35mm Grain:** 수채화 아침 햇살과 원경/근경 산 능선, 상시 52개 유영 파티클(Living Bokeh)로 픽셀 미분 에너지 상시 유지.
+4. **Size-Compensated Optical Framing:** 객체 크기 변화 시 화면 점유율($65 \sim 75\%$) 자동 보정 카메라 줌.
+5. **Kinetic Spring Typography & Rolling Counters:** 텍스트 오버슈트 안착, 숫자 고속 롤링 카운팅.
+
+### 🔇 카카오톡 모바일 공유 무결점 오디오 표준 (Anti-Clipping Audio)
+카카오톡으로 영상을 공유할 때 모바일 앱 내부 인코더가 저비트레이트(64k~96k AAC)로 재압축하면서 **음성이 찢어지거나 지직거리는 현상**을 원천 차단합니다:
+- **48,000 Hz 단일 샘플레이트 강제:** 모바일 하드웨어 리샘플링 지터 방지.
+- **트루 피크 헤드룸 (True Peak $\le -2.5\text{ dBTP}$):** AAC 손실 압축 시 오버슈트 클리핑 0% 보증.
+- **한국어 전문 AI 성우 내레이션 & BGM 사이드체인 더킹:** 성우 음성 등장 시 BGM 자동 $-10\text{ dB}$ 감쇄, 80Hz 하이패스로 스마트폰 스피커 명료도 극대화.
+- **FastStart Moov Atom (`-movflags +faststart`):** 모바일 채팅창 인앱 브라우저에서 0.1초 즉시 무손실 스트리밍.
+
+---
+
 ## 🛠️ 3. 빠른 시작 (Quick Start)
 
 ### 요구사항 (Prerequisites)
@@ -154,12 +172,16 @@ motion-film/
 │   ├── render.py            # Playwright 60fps 청크 렌더러 & 어셈블러 (Windows/Linux 호환)
 │   ├── beats.py             # NumPy 기반 오디오 스펙트럼 분석기 (BPM, 다운비트, 드롭 감지)
 │   ├── audio.py             # 피크 측정 기반 SFX 배치 & -14 LUFS 라우드니스 정규화기
+│   ├── kakao_audio_master.py # [신규] 카카오톡 모바일 무결점 오디오 마스터러 (48kHz, TP<=-2.5dB, 보컬 더킹)
 │   └── qa.py                # 프레임 차분 픽셀 그래디언트 분석기 (Pops, Holds, Loop Seam 검증)
 ├── examples/
 │   ├── ui_morph_loop.js     # 검증된 7마디 원셰이프 UI 모핑 루프 소스코드
 │   ├── ui_morph_loop_demo.mp4 # 14초 60fps 1440x1440 마스터 데모 영상
-│   └── launch_film_standalone.js # 27초 54비트 원테이크 제품 런칭 필름
+│   ├── launch_film_standalone.js # 27초 54비트 원테이크 제품 런칭 필름
+│   ├── ndb_awards_scene.js  # [신규] 2026 NDB 어워즈 90초 2,700프레임 브로드캐스트 마스터 씬
+│   └── ndb_awards_contact_sheet.jpg # 14개 주요 키프레임 콘택트 시트
 └── references/
+    ├── opus-mastery.md      # [필독] Claude Opus 능가 5대 모션 헌법 & 카톡 오디오 표준
     ├── engine-api.md        # 모든 엔진 API 함수 시그니처 및 상세 레퍼런스
     ├── choreography.md      # 비트 맵핑, 전환 어휘, 카메라 트래킹 가이드
     ├── techniques.md        # 리퀴드 글래스, 구(Goo), 조리개(Iris), 드래그 인터랙션 기법

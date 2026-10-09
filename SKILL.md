@@ -28,11 +28,14 @@ scripts/build.py            scene.js + engine.js + Base64 폰트 -> 단일 독�
 scripts/render.py           Playwright 60fps 청크 렌더러 (stills, start, work, status, assemble)
 scripts/beats.py            NumPy 기반 음원 분석: BPM 추정, 비트 그리드, 다운비트, 드롭 지점, SFX 피크 감지
 scripts/audio.py            음원 + 피크 정렬 SFX 믹싱, 방송 표준 -14 LUFS 자동 노멀라이제이션
+scripts/kakao_audio_master.py 카카오톡 모바일 공유 무결점 오디오 마스터러 (48kHz, TP<=-2.5dB, 보컬 더킹, faststart)
 scripts/qa.py               자동화 프레임 QA: 팝(Pop), 홀드(Hold), 루프 시임(Loop Seam), 비트 시트 검증
 examples/ui_morph_loop.js   검증된 7마디 원셰이프 UI 모핑 루프 (검증 완료된 레퍼런스)
 examples/ui_morph_loop_demo.mp4  완성된 14초 60fps 1440x1440 마스터 데모 영상
 examples/launch_film_standalone.js 27초 54비트 원테이크 제품 런칭 필름
-references/opus-mastery.md  [필독] Claude Opus를 능가하는 5대 초격차 모션 엔지니어링 헌법
+examples/ndb_awards_scene.js 2026 NDB 어워즈 90초 2,700프레임 브로드캐스트 마스터 씬
+examples/ndb_awards_contact_sheet.jpg 14개 주요 키프레임 콘택트 시트
+references/opus-mastery.md  [필독] Claude Opus를 능가하는 5대 초격차 모션 헌법 & 카톡 무결점 오디오 표준
 ```
 
 Read `references/opus-mastery.md`, `references/engine-api.md`, and `examples/ui_morph_loop.js` before writing the first scene.
@@ -167,3 +170,5 @@ real assets. Don't paste the code.
 - Footage: re-encode all-intra (`ffmpeg -g 1`), load via blob URL, await `seeked` before drawing (`loadVideo`/`seekVideo`, called from `prepare(t)`). `python -m http.server` can't range-seek.
 - A child with `visibility: visible` shows through a hidden parent (DOM scenes): use inherit.
 - Throughput on one core at 1440²: ~0.05 s per simple subframe, ~0.35 s with several glass elements. Budget: `frames × sub × cost`.
+- **카카오톡 공유 시 음성 깨짐 방지**: 마스터 음원이 44.1kHz이거나 True Peak가 -1 dBFS 이상이면, 카톡 모바일 저비트레이트(64k AAC) 재압축 시 인터샘플 오버슈트 클리핑(+1.5~2dB)으로 음성이 찢어집니다 → 반드시 `scripts/kakao_audio_master.py`로 48,000 Hz, True Peak $\le -2.5\text{ dBTP}$, -15.0 LUFS, `-movflags +faststart` 마스터링 필수.
+- **글로벌 식별자 충돌 방지**: `engine.js`에 이미 `BACK, LA, LB, MF, MB, G1, G2, G3`가 선언되어 있으므로 `scene.js`에서 `const BACK = ...` 중복 선언 금지 → 엔진의 `glass()`를 직접 호출할 것.

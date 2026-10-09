@@ -32,9 +32,10 @@ scripts/qa.py               자동화 프레임 QA: 팝(Pop), 홀드(Hold), 루�
 examples/ui_morph_loop.js   검증된 7마디 원셰이프 UI 모핑 루프 (검증 완료된 레퍼런스)
 examples/ui_morph_loop_demo.mp4  완성된 14초 60fps 1440x1440 마스터 데모 영상
 examples/launch_film_standalone.js 27초 54비트 원테이크 제품 런칭 필름
+references/opus-mastery.md  [필독] Claude Opus를 능가하는 5대 초격차 모션 엔지니어링 헌법
 ```
 
-Read `references/engine-api.md` and `examples/ui_morph_loop.js` before writing the first scene.
+Read `references/opus-mastery.md`, `references/engine-api.md`, and `examples/ui_morph_loop.js` before writing the first scene.
 Read the technique/audio/QA references when the brief calls for those things.
 
 ## Workflow (do the phases in order; each has a gate)
